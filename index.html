@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прыгающий Тиранозавр - Полный экран</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen">
+            <h2>🦖 Прыгающий Тиранозавр</h2>
+            <p>Нажмите ПРОБЕЛ, кликните или коснитесь экрана для прыжка</p>
+            <p>Избегайте кактусов!</p>
+            <button onclick="startGame()">Начать игру</button>
+        </div>
+        
+        <div id="score">Очки: 0</div>
+        <div id="high-score">Рекорд: 0</div>
+        <div id="dino" class="dino-run">
+            <div class="tail"></div>
+            <div class="body"></div>
+            <div class="head"></div>
+            <div class="eye"></div>
+            <div class="pupil"></div>
+            <div class="leg leg-front"></div>
+            <div class="leg leg-back"></div>
+        </div>
+        <div id="ground"></div>
+        
+        <div id="mobile-controls">
+            <div class="jump-btn" onclick="game.jump()">ПРЫЖОК</div>
+        </div>
+        
+        <div id="game-over">
+            <h2>Игра окончена! 🦖</h2>
+            <p>Ваш счет: <span id="final-score">0</span></p>
+            <p>Рекорд: <span id="final-high-score">0</span></p>
+            <button onclick="restartGame()">Играть снова</button>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>

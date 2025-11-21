@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #f7f7f7;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+#game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FF);
+}
+
+#dino {
+    position: absolute;
+    bottom: 5vh;
+    left: 10vw;
+    width: 4vmin;
+    height: 8vmin;
+    transition: bottom 0.2s;
+    border-radius: 2vmin 2vmin 0 0;
+}
+
+.dino-jump {
+    bottom: 15vh !important;
+}
+
+.cactus {
+    position: absolute;
+    bottom: 5vh;
+    width: 2vmin;
+    background: #2e8b57;
+    border-radius: 1vmin 1vmin 0 0;
+}
+
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+#ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    background: #8B4513;
+}
+
+#score {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    font-size: 4vmin;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 4vmin;
+    border-radius: 2vmin;
+    text-align: center;
+    display: none;
+    z-index: 100;
+    min-width: 50vw;
+    backdrop-filter: blur(10px);
+}
+
+#start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5vmin;
+    border-radius: 2vmin;
+    text-align: center;
+    z-index: 100;
+    min-width: 50vw;
+    backdrop-filter: blur(10px);
+}
+
+h2 {
+    font-size: 5vmin;
+    margin-bottom: 2vmin;
+}
+
+p {
+    font-size: 3vmin;
+    margin-bottom: 3vmin;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 2vmin 4vmin;
+    font-size: 3vmin;
+    border-radius: 1vmin;
+    cursor: pointer;
+    margin-top: 2vmin;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+#high-score {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    font-size: 3vmin;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#mobile-controls {
+    position: absolute;
+    bottom: 10vh;
+    right: 5vw;
+    display: none;
+    z-index: 50;
+}
+
+.jump-btn {
+    width: 15vmin;
+    height: 15vmin;
+    background: rgba(76, 175, 80, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3vmin;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    border: 3px solid white;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+    }
+
+    #dino {
+        left: 5vw;
+    }
+}
+
+/* Анимации */
+@keyframes dinoRun {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.dino-run {
+    animation: dinoRun 0.3s infinite;
+}
+
+/* Эффект тряски при Game Over */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+/* Тело динозавра */
+.body {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    background: #4CAF50;
+    border-radius: 20px 20px 10px 10px;
+    top: 15px;
+    left: 10px;
+}
+
+/* Голова */
+.head {
+    position: absolute;
+    width: 3vmin;
+    height: 2vmin;
+    background: #4CAF50;
+    border-radius: 15px 15px 5px 5px;
+    top: 5px;
+    left: 35px;
+}
+
+/* Глаз */
+.eye {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    top: 8px;
+    left: 42px;
+}
+
+.pupil {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: black;
+    border-radius: 50%;
+    top: 9px;
+    left: 43px;
+}
+
+/* Ноги - анимация бега */
+.leg {
+    position: absolute;
+    width: 1vmin;
+    height: 3vmin;
+    background: #388E3C;
+    bottom: 0;
+}
+
+.leg-front {
+    left: 1vmin;
+    animation: run-front 0.3s infinite alternate;
+}
+
+.leg-back {
+    left: 3vmin;
+    animation: run-back 0.3s infinite alternate;
+}
+
+/* Хвост */
+.tail {
+    position: absolute;
+    width: 3vmin;
+    height: 1vmin;
+    background: #4CAF50;
+    border-radius: 0 4px 4px 0;
+    top: 25px;
+    left: -5px;
+    animation: tail-wag 0.3s infinite alternate;
+}
+
+/* Анимации */
+@keyframes run-front {
+    0% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+@keyframes run-back {
+    0% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes tail-wag {
+    0% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
