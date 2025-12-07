@@ -19,6 +19,8 @@ class DinoGame {
         this.obstacles = [];
         this.clouds = [];
         this.gameLoopId = null;
+        this.gameObstacleIterator = 1;
+        this.gameObstaclePause = this.gameObstacleIterator + 1;
 
         this.setupEventListeners();
         this.updateHighScoreDisplay();
@@ -112,9 +114,10 @@ class DinoGame {
         }
 
         // Создание препятствий
-        if (Math.random() < 0.015) {
+        if (Math.random() < 0.02 && this.gameObstacleIterator > this.gameObstaclePause) {
             this.createObstacle();
         }
+        this.gameObstacleIterator > this.gameObstaclePause ? this.gameObstacleIterator = 0 : this.gameObstacleIterator++;
 
         // Создание облаков
         if (Math.random() < 0.008) {
